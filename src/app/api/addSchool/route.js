@@ -101,7 +101,7 @@ export async function POST(req) {
     // Always release connection
     if (conn) {
       try {
-        conn.end()
+        conn.release()
       } catch (releaseErr) {
         console.error("Failed to release connection:", releaseErr)
       }

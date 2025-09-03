@@ -14,7 +14,7 @@ function Navbar() {
                 <Link href={"#"}>Testimonials</Link>
             </ul>
             <div className='invisible sm:visible flex gap-2'>
-                <Button className='bg-green-400'>Signup</Button>
+                <Button className='bg-slate-400 text-white'>Signup</Button>
                 <Button className={'bg-white'}>Login</Button>
             </div>
         </div>

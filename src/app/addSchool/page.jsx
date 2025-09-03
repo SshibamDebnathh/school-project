@@ -9,7 +9,7 @@ import { useState } from "react"
 export default function AddSchoolPage() {
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
   const [status, setStatus] = useState(null)
-  const styles = "border border-black/10 text-xl placeholder:text-base placeholder:text-teal-700 focus:outline-2 focus:outline-teal-500 hover:bg-stone-300 py-6";
+  const styles = "border border-black/10 text-xl placeholder:text-base placeholder:text-slate-700 focus:outline-2 focus:outline-slate-500 hover:bg-stone-300 py-6";
   const onSubmit = async (data) => {
     const formData = new FormData()
     Object.entries(data).forEach(([key, value]) => {
@@ -42,9 +42,11 @@ export default function AddSchoolPage() {
   }
 
   return (
+    <div className="flex justify-center">
+
     <Card className="w-full max-w-md mx-auto py-10 m-8 bg-stone-200">
       <CardHeader>
-        <CardTitle className='text-3xl text-teal-600'>Register</CardTitle>
+        <CardTitle className='text-3xl text-slate-500'>Register</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">
@@ -68,14 +70,16 @@ export default function AddSchoolPage() {
             pattern: { value: /^\S+@\S+$/, message: "Invalid email format" }
           })} />
           {errors.email && <p className="text-red-500 text-xs">{errors.email.message}</p>}
-          <Input type="file" accept="image/*" className={'file:bg-teal-600 file:rounded-full file:text-white file:mr-4 file:cursor-pointer file:text-base'} {...register("image", { required: "Image is required" })} />
+          <Input type="file" accept="image/*" className={'file:bg-slate-500 file:rounded-full file:text-white file:mr-4 file:cursor-pointer file:text-base'} {...register("image", { required: "Image is required" })} />
           {errors.image && <p className="text-red-500 text-xs">{errors.image.message}</p>}
 
-          <Button type="submit" className="w-full bg-teal-600 text-white">Submit</Button>
+          <Button type="submit" className="w-full bg-slate-500 text-white">Submit</Button>
         </form>
 
         {status && <p className="mt-4 text-center text-base">{status}</p>}
       </CardContent>
     </Card>
+    </div>
+
   )
 }
