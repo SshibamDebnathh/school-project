@@ -42,9 +42,9 @@ export default function AddSchoolPage() {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center ml-2 p-4">
 
-    <Card className="w-full max-w-md mx-auto py-10 m-8 bg-stone-200">
+    <Card className="w-full max-w-md mx-auto py-10 mt-5 bg-stone-200 min-w-[320px]">
       <CardHeader>
         <CardTitle className='text-3xl text-slate-500'>Register</CardTitle>
       </CardHeader>
