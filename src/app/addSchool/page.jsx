@@ -5,8 +5,11 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useState } from "react"
+import { useSchools } from "../schoolsProvider"
 
 export default function AddSchoolPage() {
+
+  const {getData} = useSchools();
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
   const [status, setStatus] = useState(null)
   const styles = "border border-black/10 text-xl placeholder:text-base placeholder:text-slate-700 focus:outline-2 focus:outline-slate-500 hover:bg-stone-300 py-6";
@@ -27,6 +30,7 @@ export default function AddSchoolPage() {
       })
       const result = await res.json()
       if (result.success) {
+        await getData();
         setStatus("✅ School added successfully!")
         reset()
       } else {

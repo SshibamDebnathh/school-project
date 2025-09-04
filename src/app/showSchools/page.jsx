@@ -3,41 +3,28 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { useSchools } from "../schoolsProvider";
 
 
 function ShowSchools() {
 
-  const [schools, setSchools] = useState([])
+  const {schools} = useSchools()
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const getData = async () => {
-      const res = await fetch('/api/getSchools', {
-        method: "GET"
-      })
-      const data = await res.json()
-      if (data) {
-        // console.log(data)
-        setSchools(data)
-        setLoading(false)
-      }
-
-    }
-    getData()
-
-  }, [])
+  
 
   useEffect(() => {
-    console.log(schools);
+    schools && setLoading(false);
+    console.log(schools)
   }, [schools]);
 
   return (
     <div className="w-full p-4 min-w-[320px]">
-      <ul className="min-w-[300px] flex gap-2 flex-wrap justify-center bg-slate-400 rounded-md p-4 min-h-screen">
+      <ul className="min-w-[300px] flex gap-2 flex-wrap justify-center bg-slate-400 rounded-md p-4">
         {!loading? schools && schools.map(({ id, name, address, image, city }) => (
           <li
             key={id}
-            className="w-1/5 min-w-[280px] p-3 m-2 bg-white rounded-md">
+            className="w-1/5 min-w-[280px] p-3 bg-white rounded-md max-h-fit">
             {image && (
               <Image
                 src={`/schoolImages/${image}`}
